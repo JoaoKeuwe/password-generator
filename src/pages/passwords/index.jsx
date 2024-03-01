@@ -14,27 +14,27 @@ export function PasswordsPage() {
     async function loadPasswords() {
       const passwords = await getItem("@pass");
       setListPasswords(passwords);
-      console.log(passwords);
     }
     loadPasswords();
   }, [focused]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
       <View style={styles.header}>
         <Text style={styles.title}>Minhas senhas</Text>
       </View>
       <View style={styles.content}>
         <FlatList
-          style={{ flex: 1, paddingTop: 14 }}
           data={listPasswords}
           keyExtractor={(item) => String(item)}
           renderItem={({ item }) => <Text>{item}</Text>}
         />
+        
       </View>
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   header: {

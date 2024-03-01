@@ -14,9 +14,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#0e0e0e',
     padding: 14,
     width: '100%',
-    marginBottom: 14,
+    marginTop: 14,
     marginBottom: 8,
     flexDirection: 'row',
+    borderRadius: 8,
     justifyContent: 'space-between',
   },
   text: {

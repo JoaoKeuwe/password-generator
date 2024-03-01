@@ -8,7 +8,7 @@ import { PasswordItem } from "./components/passwordItem"
 export function PasswordsPage() {
   const [listPasswords, setListPasswords] = useState([]);
   const focused = useIsFocused();
-  const { getItem } = useStorage();
+  const { getItem, removeItem } = useStorage();
 
   useEffect(() => {
     async function loadPasswords() {
@@ -18,8 +18,15 @@ export function PasswordsPage() {
     loadPasswords();
   }, [focused]);
 
+ async function handleDeletePassword(item) {
+   const password = await removeItem("@pass", item)
+   setListPasswords(password)
+  }
+
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{
+      flex: 1
+    }}>
       <View style={styles.header}>
         <Text style={styles.title}>Minhas senhas</Text>
       </View>
@@ -27,7 +34,7 @@ export function PasswordsPage() {
         <FlatList
           data={listPasswords}
           keyExtractor={(item) => String(item)}
-          renderItem={({ item }) => <Text>{item}</Text>}
+          renderItem={({ item }) => <PasswordItem data={ item} removePassword={() => handleDeletePassword(item)}/>}
         />
         
       </View>

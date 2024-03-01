@@ -7,6 +7,7 @@ import {
 } from "react-native";
 
 import * as Clipboard from "expo-clipboard";
+
 export const ModalPassword = ({ passwordValue, close }) => {
   async function handleCopyPassword() {
     await Clipboard.setStringAsync(passwordValue);
